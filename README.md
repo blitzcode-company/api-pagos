@@ -1,69 +1,123 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# API-Pagos
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+    <img src="https://drive.google.com/uc?export=download&id=1yyVoEHmLQgzYpDJJJvjtpo1MHdZNP84k" width="200">
 </p>
 
-## About Laravel
+### Configuración del proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Para comenzar, clona el repositorio de GitHub a tu máquina local. Abre una terminal y ejecuta el siguiente comando:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+`Vía SSH:`
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+git clone git@github.com:blitzcode-company/api-pagos.git
+```
 
-## Learning Laravel
+`Vía HTTPS:`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+git clone https://github.com/blitzcode-company/api-pagos.git
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   Ingresamos al proyecto `cd api-pagos` y ejecutamos:
 
-## Laravel Sponsors
+```
+composer install
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-   Dentro del directorio del proyecto de Laravel, generamos el archivo .env con el siguiente comando:
 
-### Premium Partners
+```
+cp .env.example .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+-   Configuramos la base de datos dentro del archivo .env:
 
-## Contributing
+```
+DB_HOST=mysql
+DB_PORT=3306
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- Generar la clave de la aplicación
 
-## Code of Conduct
+```
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Dependencia en Oauth-api
 
-## Security Vulnerabilities
+Este proyecto depende del servicio de autenticación OAuth proporcionado por el repositorio [Oauth-api](https://github.com/blitzcode-company/Oauth-api).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Docker Compose
 
-## License
+Inicia el proyecto con el siguiente comando:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-# api-pagos
-Api para hacer pagos de prueba con Stripe.
->>>>>>> 572859cbb3fa005cb16c6a3b6a5f5474a0b70f44
+```
+sudo docker-compose up -d
+```
+El proyecto estará corriendo en el puerto **8003**. Puede corroborarlo ingresando a `http://localhost:8003/`. 
+
+**Nota:** Luego debes iniciar el proyecto de Oauth-api.
+
+
+## Realizar Pagos con Paypal
+
+<p align="center">
+    <img src="https://drive.google.com/uc?export=download&id=1AAH0JU3V_nt6OfIrvt3-wa2QXgW458EP" width="400">
+</p>
+
+### Cuenta de PayPal
+
+Para crear cuentas sandbox, visita: [Cuentas Sandbox de PayPal](https://developer.paypal.com/dashboard/accounts).
+
+Para ingresar a las cuentas, utiliza: [PayPal Sandbox](https://www.sandbox.paypal.com).
+
+#### Cuentas de prueba creadas previamente:
+
+- **Cuenta de Negocio:**
+  - Correo: `Blitzvideo@business.com`
+  - Contraseña: `Codeloco123`
+
+- **Cuenta Personal:**
+  - Correo: `diego.blitzvideo@personal.com`
+  - Contraseña: `User123.`
+
+#### Tarjetas de Crédito:
+
+- **VISA**
+  - Número de tarjeta: `4359357022550530`
+  - Fecha de caducidad: `10/2029`
+  - CVC: Cualquier 3 dígitos.
+
+- **MASTERCARD**
+  - Número de tarjeta: `5235908196330203`
+  - Fecha de caducidad: `10/2029`
+  - CVC: Cualquier 3 dígitos.
+
+#### Generador de tarjetas:
+Puedes generar tarjetas para pruebas usando el siguiente enlace: [Generador de tarjetas de PayPal](https://developer.paypal.com/api/rest/sandbox/card-testing/#link-creditcardgeneratorfortesting).
+
+### Agrega tus credenciales de PayPal al archivo `.env`:
+- `PAYPAL_CLIENT_ID=XXXX`
+- `PAYPAL_SECRET=XXXX`
+
+
+## Realizar Pagos Stripe
+
+<p align="center">
+    <img src="https://drive.google.com/uc?export=download&id=1exzUrvse4DXDmDfqEIFiJqbRSxeFFHv1" width="400">
+</p>
+
+- Tarjetas de pruebas: [Tarjetas de Prueba de Stripe](https://docs.stripe.com/testing#international-cards)
+- Ver todas las transacciones de Stripe aquí: [Dashboard de Stripe](https://dashboard.stripe.com/test/dashboard)
+
+### Agrega tus credenciales de Stripe al archivo `.env`:
+
+- `STRIPE_KEY=XXXX`
+- `STRIPE_SECRET=XXXX`
+- `STRIPE_PRICE_ID=XXXX`
+
+
+
+
