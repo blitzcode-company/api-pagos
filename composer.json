@@ -12,6 +12,7 @@
         "laravel/passport": "^10.4",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "paypal/rest-api-sdk-php": "^1.6",
         "stripe/stripe-php": "^16.1"
     },
     "require-dev": {
