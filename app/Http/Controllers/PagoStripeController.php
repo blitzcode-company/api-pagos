@@ -63,7 +63,29 @@ class PagoStripeController extends Controller
         try {
             Stripe::setApiKey(env('STRIPE_SECRET'));
 
+            // Verificar si se envió subscription_id directamente
+            $subscriptionId = $request->input('subscription_id');
+            
+            if ($subscriptionId) {
+                // Cancelar usando el subscription_id directamente
+                $subscription = Subscription::retrieve($subscriptionId);
+                $subscription->cancel();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Suscripción cancelada con éxito.',
+                ], 200);
+            }
+
+            // Fallback: buscar por email (código anterior)
             $email = $request->input('email');
+            if (!$email) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Debe proporcionar un subscription_id o email.',
+                ], 400);
+            }
+
             $existingCustomers = Customer::all(['email' => $email]);
 
             if (count($existingCustomers->data) > 0) {
